@@ -18,15 +18,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "./ui/button"
 import { useRouter } from "next/navigation"
 import NavItems from "./NavItems"
+import { signOut } from "@/lib/actions/auth.actions"
 
-const UserDropdown = () => {
+const UserDropdown = ({ user } : {user: User}) => {
     const router = useRouter()
 
     const handleSignOut = async () => {
-        router.push('/sign-in')
+      await signOut()
+      router.push('/sign-in')
     }
-
-    const user = { name: 'Abimanyu', email: 'abi@example.com' }
 
   return (
      <DropdownMenu>
